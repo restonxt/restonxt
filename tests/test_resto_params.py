@@ -9,6 +9,7 @@ def test_restonxt_params(accounts, restonxt20):
     assert restonxt20.symbol() == 'RESTO'
     assert restonxt20.name() == 'Resto Token'
     assert restonxt20.decimals() == 18
+    assert restonxt20.MAX_SUPPLY() == 1e8
 
 
 
