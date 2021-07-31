@@ -3,6 +3,15 @@ import logging
 from brownie import Wei, reverts
 LOGGER = logging.getLogger(__name__)
 
+ZERO_ADDRESS = '0x0000000000000000000000000000000000000000'
+
+def test_approve_fail(accounts, restonxt20):
+    with reverts("ERC20: approve to the zero address"):
+        restonxt20.approve(ZERO_ADDRESS, 1, {"from": accounts[0]})
+
+def test_transfer_fail(accounts, restonxt20):
+    with reverts("ERC20: transfer to the zero address"):
+        restonxt20.transfer(ZERO_ADDRESS, 1, {"from": accounts[0]})
 
 def test_restonxt20_transferFrom(accounts, restonxt20):
     restonxt20.transfer(accounts[1], 1, {"from": accounts[0]})
@@ -40,3 +49,9 @@ def test_decreaseAllowance(accounts, restonxt20):
 def test_decreaseAllowance_fail(accounts, restonxt20):
     with reverts("ERC20: decreased allowance below zero"):
         restonxt20.decreaseAllowance(accounts[4], 1e18, {'from': accounts[0]})
+
+def test_restonxt_transfer(accounts, restonxt20):
+    before_balance = restonxt20.balanceOf(accounts[0])
+    logging.info('acc = {}'.format(restonxt20.balanceOf(accounts[0])))
+    restonxt20.transfer(accounts[0], 1e18, {"from":accounts[0]})
+    assert restonxt20.balanceOf(accounts[0]) == before_balance
