@@ -14,6 +14,10 @@ Don't forget [ganache-cli](https://www.npmjs.com/package/ganache-cli)
 Deploy is very simple. You can find workflow in 
 [fixtures](./tests/fixtures/deploy_env.py) 
 
+
+#### 2021-08-03 Ethereum Mainnet
+https://etherscan.io/address/0x45e756bd263ab8bf591f28f6286325e76479926a#code
+
 #### 2021-07-31 Testnet Rinkeby
 https://rinkeby.etherscan.io/address/0x13Ba5d5Eb87a198D14A0d5e245D388b814C1015c#code
 
